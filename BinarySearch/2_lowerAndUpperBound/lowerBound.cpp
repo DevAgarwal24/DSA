@@ -1,3 +1,6 @@
+// https://practice.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1
+// https://practice.geeksforgeeks.org/problems/ceil-the-floor2802/1
+
 #include <iostream>
 #include <vector>
 using namespace std;
