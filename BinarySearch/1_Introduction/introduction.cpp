@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/binary-search/
+// https://practice.geeksforgeeks.org/problems/binary-search-1587115620/1
+
 #include <iostream>
 #include <vector>
 using namespace std;
