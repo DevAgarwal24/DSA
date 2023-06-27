@@ -1,3 +1,6 @@
+// https://practice.geeksforgeeks.org/problems/first-and-last-occurrences-of-x3116/1
+// https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+
 #include <iostream>
 #include <vector>
 #include <utility>

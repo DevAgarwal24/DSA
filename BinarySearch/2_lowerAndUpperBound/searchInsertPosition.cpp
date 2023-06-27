@@ -1,3 +1,6 @@
+// https://practice.geeksforgeeks.org/problems/search-insert-position-of-k-in-a-sorted-array/1
+// https://leetcode.com/problems/search-insert-position/
+
 #include <iostream>
 #include <vector>
 
