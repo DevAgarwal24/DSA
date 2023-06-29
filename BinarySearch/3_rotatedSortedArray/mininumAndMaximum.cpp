@@ -1,3 +1,6 @@
+// https://practice.geeksforgeeks.org/problems/minimum-element-in-a-sorted-and-rotated-array3611/1
+// https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+
 #include <iostream>
 #include <vector>
 

@@ -1,3 +1,6 @@
+// https://practice.geeksforgeeks.org/problems/search-in-rotated-array-2/1
+// https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+
 #include <iostream>
 #include <vector>
 
