@@ -60,9 +60,41 @@ int mininumSortedRotatedArray(vector<int>& v)
     return lmin;
 }
 
-int maximumSortedRotatedArray(vector<int>& v)
+int maximumSortedRotatedArray(vector<int>& arr)
 {
-    return 0;
+    int hmax = INT32_MIN;
+    int pos = -1;
+       
+    int low = 0;
+    int high = arr.size() - 1;
+       
+    while (low <= high) {
+        int mid = low + (high - low)/2;
+  
+        if (arr[low] <= arr[high]) {
+            if (arr[high] >= hmax) {
+	            pos = high;
+                hmax = arr[high];
+            }
+            break;
+        }
+           
+        if (arr[low] <= arr[mid]) {
+            if (arr[mid] >= hmax) {
+                pos = mid;
+                hmax = arr[mid];
+            }
+            low = mid + 1;
+        } else {
+            if (arr[high] >= hmax) {
+                pos = high;
+                hmax = arr[high];
+            }
+            high = mid - 1;
+       }
+    }
+       
+    return hmax;
 }
 
 int main()
@@ -70,29 +102,31 @@ int main()
     vector<int> v = {4, 5, 6, 7, 8, 9, 1, 2, 3};
     cout << minimumSortedRotatedArrayPivot(v) << std::endl;
     cout << mininumSortedRotatedArray(v) << std::endl;
+    cout << maximumSortedRotatedArray(v) << std::endl;
     cout << std::endl;
 
     v.clear();
     v = {7, 8, 9, 0, 3, 4, 5, 6};
     cout << minimumSortedRotatedArrayPivot(v) << std::endl;
     cout << mininumSortedRotatedArray(v) << std::endl;
+    cout << maximumSortedRotatedArray(v) << std::endl;
     cout << std::endl;
 
     v.clear();
     v = {8, 9, 10, 2, 3, 4, 5, 6, 7};
     cout << minimumSortedRotatedArrayPivot(v) << std::endl;
     cout << mininumSortedRotatedArray(v) << std::endl;
+    cout << maximumSortedRotatedArray(v) << std::endl;
     cout << std::endl;
 
     v.clear();
     v = {3, 4, 5, 6, 7, 8, 9, 10};
     cout << minimumSortedRotatedArrayPivot(v) << std::endl;
     cout << mininumSortedRotatedArray(v) << std::endl;
-    cout << std::endl;
-
-    cout << std::endl;
-
     cout << maximumSortedRotatedArray(v) << std::endl;
+    cout << std::endl;
+
+    cout << std::endl;
 
     return 0;
 }
