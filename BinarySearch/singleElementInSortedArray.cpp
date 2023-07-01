@@ -1,3 +1,6 @@
+// https://practice.geeksforgeeks.org/problems/find-the-element-that-appears-once-in-sorted-array0624/1
+// https://leetcode.com/problems/single-element-in-a-sorted-array/
+
 // The array will be sorted and each element will always be present twice, except one.
 // We need to find the element that is not repeated in the array.
 // There is a gurantee that the single element will be present in the array and all other
