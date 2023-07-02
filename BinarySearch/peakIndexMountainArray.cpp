@@ -1,5 +1,5 @@
-// https://practice.geeksforgeeks.org/problems/peak-element/1
-// https://leetcode.com/problems/find-peak-element/
+// https://practice.geeksforgeeks.org/problems/peak-element/1 -> This problem can have repeated elements
+// https://leetcode.com/problems/find-peak-element/			  -> This expects no repetion of consecutive elements
 
 #include <iostream>
 #include <vector>
