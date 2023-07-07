@@ -1,24 +1,15 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <math.h>
+#include <algorithm>
 
 using namespace std;
 
-bool isPossible(vector<int> v, int h, long long int n) {
+bool isPossible(vector<int> v, int h, int n) {
 
     for (int i = 0; i < v.size(); i++) {
-        if (v[i] <= n) {
-            h--;
-        } else {
-            long long tmp;
-            if (v[i] % n == 0) {
-                tmp = (v[i] / n);
-            } else {
-                tmp = (v[i] / n) + 1;
-            }
 
-            h -= tmp;
-        }
+        h -= ceil((double)v[i]/(double)n);
 
         if (h < 0) {
             return false;
