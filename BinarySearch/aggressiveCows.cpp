@@ -1,4 +1,3 @@
-// Question
 // https://www.codingninjas.com/codestudio/problems/aggressive-cows_1082559?source=youtube&campaign=love_babbar_codestudio2&utm_source=youtube&utm_medium=affiliate&utm_campaign=love_babbar_codestudio2
 
 #include <iostream>
@@ -35,6 +34,8 @@ bool isPossible(vector<int>& v, int k, int n) {
 
 int aggressiveCows(vector<int>& v, int k) {
 
+	// The minimum distance between two cows will be the distance between any two consequtive stalls
+	// hence we sort the stalls here
     sort(v.begin(), v.end());
 
     auto min = min_element(v.begin(), v.end()); // can take the mininum value directly
