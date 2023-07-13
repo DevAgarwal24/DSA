@@ -1,3 +1,5 @@
+// https://www.codingninjas.com/studio/problems/allocate-books_1090540
+
 // Given an array where each entry represents the number of pages in a book
 // There are m students in total
 //
@@ -23,10 +25,11 @@
 #include <iostream>
 #include <vector>
 #include <numeric>
+#include <algorithm>
 
 using namespace std;
 
-// Try allocating the pages (books) between m students such that no student gets more than n pages
+// Try allocating the books between m students such that no student gets more than n pages
 // If allocation is possible, return true, otherwise false
 bool isPossibleSolution(vector<int>& v, int m, int n) {
     int studentCount = 1;
@@ -37,50 +40,38 @@ bool isPossibleSolution(vector<int>& v, int m, int n) {
             pageSum += v[i];
         } else {    // The next book couldn't be allocated. Move to the next student
             studentCount++;
-            // If we are trying to allocate books to more students than available or
-            // if the pages in the current book is greater than our maximum pages to allocate
-            // In both the cases, the number of pages we have assumed is not a possible solution
-            if (studentCount > m || v[i] > n) {
-                return false;
-            }
 
-            pageSum = v[i];
-        }
-    }
-
-#if 0
-    // Another possible way to write the above condition
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i] > n) {
-            return false;
-        }
-
-        if (pageSum + v[i] > n) {
-            studentCount++;
+			// If the number of students exceed m to which books can be allocated, then it means that all the books are not being allocated
+			// and the number of pages should be increased
             if (studentCount > m) {
                 return false;
             }
+
             pageSum = v[i];
-        } else {
-            pageSum += v[i];
         }
     }
-#endif
 
+	// This can both mean our answer or a number for which we can allocate books to lesser number of student
+	// and we should decrease the barrier
+	// E.g. [10, 10, 10, 10]
+	// If n = 20, then we can only allocate to 2 students
+	// Only at n = 10, can we allocate to all the 4 students
     return true;
 }
 
 int allocateBook(vector<int>& v, int m) {
-    int low = 0;
-    int high = accumulate(v.begin(), v.end(), 0);   // Tsum of all the pages in books
+	// If we allocate the minimum number of pages book as the maximum, then only one book will be taken and other books won't be used at all
+	// We have to atleast take the maximum number of pages book as the lowest possible
+    int low = *max_element(v.begin(), v.end());
+    int high = accumulate(v.begin(), v.end(), 0);   // Sum of all the pages in books
 
     int ans = -1;
 
     while (low <= high) {
         int mid = low + (high-low)/2;
 
-        // If a certain number of pages(books) can be allocated to the students
-        // then any number of pages that is greater than that number of pages can also be allocated.
+		// mid is the maximum number of pages that should be allocated to a student without any books left
+		// Here the number of students to whom books are allocated could be less
         if (isPossibleSolution(v, m, mid)) {   
             ans = mid;
             high = mid - 1;
