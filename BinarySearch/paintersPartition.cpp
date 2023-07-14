@@ -1,5 +1,8 @@
 // Painters Partition Problem
+// The solution is same for the Split Array Largest sum minimized
+// Observer carefully and you'll find that the problem is also same as book allocation problem
 // https://www.codingninjas.com/codestudio/problems/painter's-partition-problem_1089557
+// https://www.codingninjas.com/studio/problems/largest-subarray-sum-minimized_7461751
 
 #include <iostream>
 #include <vector>
