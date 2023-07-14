@@ -18,7 +18,7 @@ bool isPossible(vector<int>& v, int k, int n) {
             paintedArea += v[i];
         } else {
             painters++;
-            if (painters>k || v[i] > n) {
+            if (painters>k) {
                 return false;
             }
 
@@ -33,20 +33,17 @@ int paintersPartition(vector<int>& v, int k) {
     int low = *(max_element(v.begin(), v.end()));
     int high = accumulate(v.begin(), v.end(), 0);
 
-    int ans = -1;
-
     while (low <= high) {
         int mid = low + (high - low)/2;
 
         if (isPossible(v, k, mid)) {
-            ans = mid;
             high = mid - 1;
         } else {
             low = mid + 1;
         }
     }
 
-    return ans;
+    return low;
 }
 
 int main()
