@@ -1,4 +1,4 @@
-// https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679?leftPanelTab=1
+// https://www.codingninjas.com/studio/problems/nth-root-of-m_1062679
 
 #include <iostream>
 #include <cmath>
