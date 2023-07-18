@@ -1,4 +1,5 @@
 // https://practice.geeksforgeeks.org/problems/square-root/0
+// https://www.codingninjas.com/studio/problems/square-root-integral_893351
 
 #include <iostream>
 #include <math.h>
