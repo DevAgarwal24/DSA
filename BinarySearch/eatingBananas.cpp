@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/koko-eating-bananas/description/
+// https://www.codingninjas.com/studio/problems/minimum-rate-to-eat-bananas_7449064
+
 #include <iostream>
 #include <vector>
 #include <math.h>
