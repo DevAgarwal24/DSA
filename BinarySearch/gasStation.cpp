@@ -38,6 +38,7 @@ long double MinPossMaxDistanceBruteForce(vector<int>& arr, int k) {
     return maxDist;
 }
 
+// This answer is good enough for the interviews
 long double MinPossMaxDistance(vector<int>& arr, int k) {
     int n = arr.size();
 
@@ -53,18 +54,59 @@ long double MinPossMaxDistance(vector<int>& arr, int k) {
         pq.pop();
 
         int idx = tmp.second;
+        howMany[idx]++;
 
         // Instead of calculating, we can store the intial section lengths.
         // But that will lead to increased space complexity
         long double length = arr[idx+1] - arr[idx];
 
-        long double sectionDistance = length / (long double)(howMany[tmp.second] + 1 + 1);
+        long double sectionDistance = length / (long double)(howMany[tmp.second] + 1);
         pq.push({sectionDistance, tmp.second});
-
-        howMany[tmp.second]++;
     }
 
     return pq.top().first;
+}
+
+int noOfGasStationsRequired(vector<int>& arr, long double dist) {
+    int cnt = 0;
+    for (int i = 1; i < arr.size(); i++) {
+        int numberInBetween = (arr[i] - arr[i-1]) / dist;
+        if ((arr[i] - arr[i-1]) / dist == numberInBetween * dist) {     // Fully divisible case
+            numberInBetween--;
+        }
+        cnt += numberInBetween;
+    }
+
+    return cnt;
+}
+
+// All the binary search problems with long double will have this kind of pattern
+// and not the pattern we have been using with the integers
+// Here TC = NlogN. We optimise here in space by not using any extra memory
+long double MinPossMaxDistanceBS(vector<int>& arr, int k) {
+    int n = arr.size();
+
+    long double low = 0;
+    long double high = 0;
+
+    for (int i = 0; i < n-1; i++) {
+        high = max(high, (long double)(arr[i+1] - arr[i]));
+    }
+
+    long double diff = 1e-6;
+
+    while (high - low > diff) {
+        long double mid = low + (high - low)/2;
+
+        int cnt = noOfGasStationsRequired(arr, mid);
+        if (cnt > k) {
+            low = mid;
+        } else {
+            high = mid;
+        }
+    }
+
+    return high;
 }
 
 int main()
@@ -73,6 +115,7 @@ int main()
 
     cout << MinPossMaxDistanceBruteForce(v, 5) << endl;     // 3
     cout << MinPossMaxDistance(v, 5) << endl;
+    cout << MinPossMaxDistanceBS(v, 5) << endl;
 
     cout << endl;
 
@@ -80,6 +123,7 @@ int main()
     v = {1, 2, 3, 4, 5};
     cout << MinPossMaxDistanceBruteForce(v, 4) << endl;     // 0.5
     cout << MinPossMaxDistance(v, 4) << endl;
+    cout << MinPossMaxDistanceBS(v, 4) << endl;
 
     cout << endl;
 
