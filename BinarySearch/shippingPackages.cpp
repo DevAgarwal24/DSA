@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/submissions/
 // https://www.codingninjas.com/studio/problems/capacity-to-ship-packages-within-d-days_1229379?leftPanelTab=0
 
 #include <iostream>
@@ -16,9 +17,6 @@ bool isPossible (vector<int>& weights, int d, int n) {
             sum += weights[i];
         } else {
             days++;
-            if (n < weights[i]) {
-                return false;
-            }
             sum = weights[i];
             if (days > d) {
                 return false;
@@ -31,7 +29,6 @@ bool isPossible (vector<int>& weights, int d, int n) {
 
 int leastWeightCapacity(vector<int> &weights, int d)
 {
-    // int low = 1;
     int low = *max_element(weights.begin(), weights.end());
     int high = std::accumulate(weights.begin(), weights.end(), 0);
 
