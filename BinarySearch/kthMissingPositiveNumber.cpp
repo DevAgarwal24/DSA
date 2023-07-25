@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/kth-missing-positive-number/
+// https://www.codingninjas.com/studio/problems/kth-missing-element_893215
+
 #include <iostream>
 #include <vector>
 
