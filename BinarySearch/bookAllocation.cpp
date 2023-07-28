@@ -41,7 +41,7 @@ bool isPossibleSolution(vector<int>& v, int m, int n) {
         } else {    // The next book couldn't be allocated. Move to the next student
             studentCount++;
 
-			// If the number of students exceed m to which books can be allocated, then it means that all the books are not being allocated
+			// If the number of students exceed m to which books can be allocated, then it means that all the books are not being allocated to m students and we need more students to allocate the threshold pages
 			// and the number of pages should be increased
             if (studentCount > m) {
                 return false;
@@ -54,7 +54,7 @@ bool isPossibleSolution(vector<int>& v, int m, int n) {
 	// This can both mean our answer or a number for which we can allocate books to lesser number of student
 	// and we should decrease the barrier
 	// E.g. [10, 10, 10, 10]
-	// If n = 20, then we can only allocate to 2 students
+	// If n = 20, then we can only allocate to 2 students and hence should reduce the number of pages per student
 	// Only at n = 10, can we allocate to all the 4 students
     return true;
 }
