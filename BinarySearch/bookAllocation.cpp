@@ -1,4 +1,5 @@
 // https://www.codingninjas.com/studio/problems/allocate-books_1090540
+// https://leetcode.com/problems/split-array-largest-sum/description/
 
 // Given an array where each entry represents the number of pages in a book
 // There are m students in total
