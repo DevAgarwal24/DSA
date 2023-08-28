@@ -26,7 +26,7 @@ int lowerBound(vector<int> &v, int num) {
 }
 
 int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
-    int max1s = -1;
+    int max1s = 0;
     int index = -1;
 
     for (int i = 0; i < n; i++) {
