@@ -1,4 +1,4 @@
-//
+// https://leetcode.com/problems/search-a-2d-matrix/description/
 //
 
 #include <iostream>
@@ -41,6 +41,13 @@ int main()
     cout << searchMatrix(matrix, 23) << endl;
     cout << searchMatrix(matrix, 18) << endl;
     cout << searchMatrix(matrix, 5) << endl;
+
+    cout << endl;
+
+    vector<vector<int>> matrix2 = {{1}};
+
+    cout << searchMatrix(matrix2, 5) << endl;
+    cout << searchMatrix(matrix2, 1) << endl;
 
     return 0;
 }
