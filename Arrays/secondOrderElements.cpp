@@ -1,4 +1,4 @@
-//
+// https://www.codingninjas.com/studio/problems/ninja-and-the-second-order-elements_6581960
 
 #include<iostream>
 #include<vector>
