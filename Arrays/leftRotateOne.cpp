@@ -1,4 +1,4 @@
-// 
+// https://www.codingninjas.com/studio/problems/left-rotate-an-array-by-one_5026278
 
 #include <iostream>
 #include <vector>

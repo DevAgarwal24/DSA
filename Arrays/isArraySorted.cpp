@@ -1,4 +1,4 @@
-//
+// https://www.codingninjas.com/studio/problems/ninja-and-the-sorted-check_6581957
 
 #include <iostream>
 #include <vector>
