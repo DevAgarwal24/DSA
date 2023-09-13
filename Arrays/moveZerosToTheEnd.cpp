@@ -1,5 +1,5 @@
-//
-//
+// https://leetcode.com/problems/move-zeroes/
+// https://www.codingninjas.com/studio/problems/ninja-and-the-zero-s_6581958
 
 #include <iostream>
 #include <vector>
