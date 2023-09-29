@@ -46,6 +46,17 @@ void leftRotate(vector<int> &arr, int d) {
     reverse(arr, 0, n);
 }
 
+void rightRotate(vector<int> &arr, int d) {
+    int n = arr.size();
+    d = d % n;
+
+    if (d == 0) return;
+
+    reverse(arr, 0, n);
+    reverse(arr, 0, d);
+    reverse(arr, d, n);
+}
+
 void printArray(vector<int> &arr) {
     for (int i : arr) {
         cout << i << " ";
@@ -59,10 +70,14 @@ int main()
     vector<int> v = {1, 2, 3, 4, 5, 6, 7};
     leftRotate(v, 3);
     printArray(v);
+    rightRotate(v, 3);
+    printArray(v);
 
     v.clear();
     v = {5, 4, 3, 2, 1};
     leftRotate(v, 2);
+    printArray(v);
+    rightRotate(v, 2);
     printArray(v);
 
     return 0;
