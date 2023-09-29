@@ -57,28 +57,28 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
 // S.C = O(N)
 // This solution with modifications done for 0s will work for array with negative elements as well and will be
 // the most optimal solution for that question
-#if 0
-int longestSubarrayWithSumK(vector<int> a, long long k) {
+int longestSubarrayWithSumK(vector<int> arr, long long k) {
     unordered_map<long long, int> m;
 
-    long long sum = 0;
     int maxCount = 0;
+    long long sum = 0;
 
-    for (int i = 0; i < a.size(); i++) {
-        sum += a[i];
-        if (m.find(sum) == m.end())     // Added this check to not ovewrite the existing values
+    for (int i = 0; i < arr.size(); i++) {
+        sum += arr[i];
+        if (m.find(sum) == m.end()) {
             m.insert(make_pair(sum, i));
+        }
 
         long long diff = sum - k;
-        if (diff > 0 && m.find(diff) != m.end()) {  // there is an element with sum till that point = diff
-            int length = i - m[diff];
-            if (length > maxCount) maxCount = length;
+        if (diff == 0) {
+            maxCount = max(maxCount, i + 1);
+        } else if (m.find(diff) != m.end()) {
+            maxCount = max(maxCount, i - m[diff]);
         }
     }
 
     return maxCount;
 }
-#endif
 
 
 // Optimal Solution
@@ -87,6 +87,8 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
 // Move the fixed pointer only when the sum is greater than the required sum of the sub array
 // T.C = O(N) and worst case O(2N)
 // S.C = O(1)
+// This solution works with only positive integers
+#if 0
 int longestSubarrayWithSumK(vector<int> a, long long k) {
     int left = 0;
     int right = 0;
@@ -111,11 +113,16 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
 
     return maxCount;
 }
+#endif
 
 int main()
 {
     vector<int> v = {1, 2, 3, 1, 1, 1, 1, 4, 2, 3};
-    cout << longestSubarrayWithSumK(v, 3) << endl;
+    cout << longestSubarrayWithSumK(v, 3) << endl;		// 3
+
+    v.clear();
+    v = {-1, 0, 1, 1, -1, -1, 0};
+    cout << longestSubarrayWithSumK(v, 0) << endl;		// 6
 
     return 0;
 }
