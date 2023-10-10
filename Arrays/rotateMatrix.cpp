@@ -36,7 +36,7 @@ vector<vector<int>> rotateMatrix(vector<vector<int>> &mat){
 // Optimal Solution
 // Try to save the space and do the rotation in-place
 // Rotation of a matrix to the right = Transpose of the matrix, and the reversing each row
-// T.C = O(n*n) + O(n*n)
+// T.C = O(n*n/2) + O(n*n/2)
 // S.C = O(1)
 vector<vector<int>> rotateMatrix(vector<vector<int>> &mat){
 	// Transpose of the matrix
