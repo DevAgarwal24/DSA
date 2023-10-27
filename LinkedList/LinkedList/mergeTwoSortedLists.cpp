@@ -5,6 +5,8 @@
 
 using namespace std;
 
+// T.C = O(n+m)
+// S.C = O(1)
 Node *mergeTwoSortedLists(Node *l1, Node *l2) {
     Node *tmp = new Node();
     Node *curr = tmp;
