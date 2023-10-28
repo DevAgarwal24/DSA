@@ -13,7 +13,7 @@ Node *mergeTwoSortedLists(Node *l1, Node *l2) {
     Node *curr = tmp;
 
     while (l1 && l2) {
-        if (l1->getData() < l2->getData()) {
+        if (l1->data < l2->data) {
             curr->next = l1;
             l1 = l1->next;
         } else {
@@ -42,14 +42,14 @@ Node *mergeTwoSortedLists(Node *l1, Node *l2) {
     if (l1 == nullptr) return l2;
     if (l2 == nullptr) return l1;
 
-    if (l1->getData() > l2->getData()) swap(l1, l2);
+    if (l1->data > l2->data) swap(l1, l2);
 
     Node *res = l1;
 
     while (l1 && l2) {
         // This will point to the node previous to the node pointed by l1
         Node *tmp = nullptr;
-        while (l1 && l1->getData() <= l2->getData()) {
+        while (l1 && l1->data <= l2->data) {
             tmp = l1;
             l1 = l1->next;
         }
