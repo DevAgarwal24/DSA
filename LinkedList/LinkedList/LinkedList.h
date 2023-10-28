@@ -9,18 +9,14 @@ public:
 	Node(int x) : data{x}, next{nullptr} {}
 	Node(int x, Node* next) : data{x}, next{next} {}
 
-	int getData() { return data; }
-
+    int data;
 	Node* next;
-
-private:
-	int data;
 };
 
 // Printing the linked list
 void printLinkedList(Node* head) {
 	while (head != nullptr) {
-		cout << head->getData() << " ";
+		cout << head->data << " ";
 		head = head->next;
 	}
 
