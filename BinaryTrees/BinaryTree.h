@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -69,4 +70,103 @@ void postOrderTraversal(Node *root) {
     postOrderTraversal(root->left);
     postOrderTraversal(root->right);
     cout << root->data << " ";
+}
+
+vector<int> preOrderTraversalIterative(Node *root){
+    vector<int> ans;
+    if (root == NULL) return ans;
+
+    stack<Node*> s;
+    s.push(root);
+
+    while (!s.empty()) {
+        Node *node = s.top();
+        s.pop();
+
+        ans.push_back(node->data);
+        if (node->right) s.push(node->right);
+        if (node->left) s.push(node->left);
+    }
+
+    return ans;
+}
+
+vector<int> inOrderTraversalIterative(Node *root)
+{
+    vector<int> ans;
+    if (root == NULL) return ans;
+
+    stack<Node*> s;
+    Node *node = root;
+
+    while (true) {
+        if (node != NULL) {
+            s.push(node);
+            node = node->left;
+        } else {
+            if (s.empty()) break;
+            node = s.top();
+            s.pop();
+            ans.push_back(node->data);
+            node = node->right;
+        }
+    }
+
+    return ans;
+}
+
+vector<int> postorderTraversalIterative(Node *root)
+{
+    vector<int> ans;
+    if (root == NULL) return ans;
+
+    stack<Node*> s1, s2;
+    s1.push(root);
+
+    while (!s1.empty()) {
+        Node *node = s1.top();
+        s1.pop();
+
+        s2.push(node);
+        if (node->left) s1.push(node->left);
+        if (node->right) s1.push(node->right);
+    }
+
+    while (!s2.empty()) {
+        ans.push_back(s2.top()->data);
+        s2.pop();
+    }
+    
+    return ans;
+}
+
+vector<int> postorderTraversalIterativeII(Node *root) {
+    vector<int> ans;
+    if (root == NULL) return ans;
+
+    stack<Node*> s;
+    Node* curr = root;
+
+    while (curr || !s.empty()) {
+        if (curr) {
+            s.push(curr);
+            curr = curr->left;
+        } else {
+            Node *tmp = s.top()->right;
+            if (tmp == NULL) {
+                tmp = s.top();
+                s.pop();
+                ans.push_back(tmp->data);
+                while (!s.empty() && tmp == s.top()->right) {
+                    tmp = s.top();
+                    s.pop();
+                    ans.push_back(tmp->data);
+                }
+            } else {
+                curr =tmp;
+            }
+        }
+    }
+
+    return ans;
 }
