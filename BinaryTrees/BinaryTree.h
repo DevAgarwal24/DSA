@@ -115,6 +115,7 @@ vector<int> inOrderTraversalIterative(Node *root)
     return ans;
 }
 
+// Post order traversal using two stack
 vector<int> postorderTraversalIterative(Node *root)
 {
     vector<int> ans;
@@ -140,6 +141,7 @@ vector<int> postorderTraversalIterative(Node *root)
     return ans;
 }
 
+// Post order traversal using one stack
 vector<int> postorderTraversalIterativeII(Node *root) {
     vector<int> ans;
     if (root == NULL) return ans;
@@ -169,4 +171,51 @@ vector<int> postorderTraversalIterativeII(Node *root) {
     }
 
     return ans;
+}
+
+// Boundary Traversal
+void leftTraversal(Node *root, vector<int> &ans) {
+	if (root == nullptr) return;
+	if (root->left == nullptr && root->right == nullptr) return;
+
+	ans.push_back(root->data);
+	if (root->left) {
+		leftTraversal(root->left, ans);
+	} else if (root->right) {
+		leftTraversal(root->right, ans);
+	}
+}
+
+void leafTraversal(Node *root, vector<int> &ans) {
+	if (root == nullptr) return;
+
+	if (root->left == nullptr && root->right == nullptr) ans.push_back(root->data);
+	leafTraversal(root->left, ans);
+	leafTraversal(root->right, ans);
+}
+
+void rightTraversal(Node *root, vector<int> &ans) {
+	if (root == nullptr) return;
+	if (root->left == nullptr && root->right == nullptr) return;
+
+	if (root->right) {
+		rightTraversal(root->right, ans);
+	} else if (root->left) {
+		rightTraversal(root->left, ans);
+	}
+
+	ans.push_back(root->data);
+}
+
+vector<int> traverseBoundary(Node *root)
+{
+	vector<int> ans;
+	if (root == nullptr) return ans;
+	
+	ans.push_back(root->data);
+	leftTraversal(root->left, ans);
+	leafTraversal(root, ans);
+	rightTraversal(root->right, ans);
+
+	return ans;
 }
