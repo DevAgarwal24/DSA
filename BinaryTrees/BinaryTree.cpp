@@ -21,6 +21,11 @@ int main()
     
     postOrderTraversal(root);   // 4 2 7 3 1
     cout << endl;
+
+	vector<int> boundary = traverseBoundary(root);
+    for (auto i : boundary)     // 1 2 4 7 3
+        cout << i << " ";
+    cout << endl;
     
     return 0;   
 }
