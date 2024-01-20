@@ -8,12 +8,11 @@
 using namespace std;
 
 // Recursive
-// T.C = 
-// S.C = 
+// T.C = O(2^(total number of elements in the triangle))
+// S.C = O(N) where N is the number of rows
 #if 0
 int solve(int n, int i, int j, vector<vector<int>> &triangle) {
 	if (i == n-1) return triangle[i][j];
-	if (i > n-1) return 0;
 
 	int down = solve(n, i+1, j, triangle);
 	int diag = solve(n, i+1, j+1, triangle);
@@ -27,8 +26,8 @@ int minimumPathSum(vector<vector<int>>& triangle, int n){
 #endif
 
 // Memoization
-// T.C = 
-// S.C = 
+// T.C = O(N*N)
+// S.C = O(N) + O(N*N)
 #if 0
 int solve(int n, int i, int j, vector<vector<int>> &triangle, vector<vector<int>> &arr) {
 	if (i == n-1) return triangle[i][j];
@@ -49,8 +48,8 @@ int minimumPathSum(vector<vector<int>>& triangle, int n){
 #endif 
 
 // Tabulation
-// T.C = 
-// S.C = 
+// T.C = O(N*N)
+// S.C = O(N*N)
 #if 0
 int minimumPathSum(vector<vector<int>>& triangle, int n){
 	vector<vector<int>> arr(n, vector<int>(n, 0));
@@ -79,8 +78,8 @@ int minimumPathSum(vector<vector<int>>& triangle, int n){
 #endif
 
 // Space Optimization
-// T.C = 
-// S.C = 
+// T.C = O(N*N)
+// S.C = O(N)
 int minimumPathSum(vector<vector<int>>& triangle, int n){
 	vector<int> arr(n, 0);
 	
