@@ -76,10 +76,6 @@ int searchSortedRotatedArrayUsingPivot(vector<int>& v, int number)
     int low = 0;
     int high = v.size() - 1;
 
-    if (pivot == number) {
-        return pivot;
-    }
-
     if (v[pivot] <= number && number <= v[high]) {
         low = pivot;
     } else {
