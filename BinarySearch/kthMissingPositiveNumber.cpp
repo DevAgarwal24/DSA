@@ -34,11 +34,8 @@ int missingK(vector<int> &vec, int n, int k) {
 
 int missingK2(vector<int> &vec, int n, int k) {
     for (int i = 0; i < n; i++) {
-	    if (vec[i] <= k) {
-		    k++;
-	    } else {
-            break;
-	    }
+        if (vec[i] <= k) k++;
+        else break;
     }
 
     return k;
@@ -51,7 +48,7 @@ int missingK3(vector<int> &vec, int n, int k) {
     while (low <= high) {
         int mid = low + (high - low)/2;
 
-	    // This tells how many numbers are missing
+        // This tells how many numbers are missing
         int diff = vec[mid] - (mid + 1);
 
         // If the numbers missing are less than the kth missing to be found
@@ -76,7 +73,7 @@ int missingK3(vector<int> &vec, int n, int k) {
 
 int main()
 {
-	vector<int> v = {4, 7, 9, 10};
+    vector<int> v = {4, 7, 9, 10};
 
     cout << missingK(v, v.size(), 1) << endl;   // 1
     cout << missingK2(v, v.size(), 1) << endl;
@@ -87,5 +84,5 @@ int main()
     cout << missingK2(v, v.size(), 4) << endl;	// 5
     cout << missingK3(v, v.size(), 4) << endl;
 
-	return 0;
+    return 0;
 }
